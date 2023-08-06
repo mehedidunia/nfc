@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="_token" content="QJ9PDZz3MxJyK9WetR5NCpFU5RsZvsfMAnp8eQ0W">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@700&display=swap" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">  
+    <title>Mehedi Hasan </title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.png">
+</head>
+<body>
+    <div id="wrap">
+        <div id="app">
+    <div id="theme" class="dark">
+        <div id="top">
+           <h1> Mehedi Hasan </h1>
+        </div>
+        <div id="content">
+            <div class="card-preview">
+                <div id="avatar-wrap">
+                    <img id="avatar-img" class="" src="images/mehedi-raw.jpg"/>
+                </div>
+                <div class="right">
+                    <div class="title">Mehedi Hasan</div>
+                    <div class="note">Founder & Proprietor of <br>Beauty Nest</div>
+                </div>
+            </div>
+            <div class="actions">
+                <div id="save-contact-button" class="button bordered" onclick="saveContact()">SAVE CONTACT</div>
+                    <div class=" connect-profile-button" class="button bordered highlight">
+                                    <div id="call-now-button" class="button bordered highlight" onclick="callNow()">CALL NOW</div>
+                                </div>
+            </div>
+                <div class="links-wrap">
+                    <img id="button-links-left" src="/icons/left.svg" onclick="links_left()">
+                    <img id="button-links-right" src="/icons/right.svg" onclick="links_right()">
+                    <div class="links">
+                                <a href="https://beautynest.com.bd/" target="_blank">
+                                    <img class="link" src="images/web.png">
+                                </a>
+                                <a href="https://www.facebook.com/bdbeautynest" target="_blank">
+                                    <img class="link" src="images/facebook.png">
+                                </a>
+                                <a href="https://www.youtube.com/c/beautynest" target="_blank">
+                                    <img class="link" src="images/yt.png">
+                                </a>
+                                <a href="https://www.instagram.com/beautynest_bd/" target="_blank">
+                                    <img class="link" src="images/instagram.png">
+                                </a>
+                    </div>
+                </div>
+            <div class="attributes">
+                <div class="attribute">
+                    <img class="icon" src="images/email.png">
+                    <a class="value" href="mailto:beautynest007@gmail.com">beautynest007@gmail.com</a>
+                </div>
+                    <div class="attribute">
+                        <img class="icon" src="images/phonec.png">
+                        <a class="value" href="tel:+8801316455518">+8801316 455518 or +8801714 900945</a>
+                    </div>
+                    <div class="attribute">
+                        <img class="icon" src="images/location.png">
+                        <a class="value" href="https://www.google.com/maps/search/?api=1&query=Beauty Nest, Shop #105, Level#3, New Market City Complex(Biswas Builders), New Market, Dhaka-1205, Bangladesh">Beauty Nest, Shop #105, Level#3, New <br>Market City Complex(Biswas Builders), <br>New Market, Dhaka-1205, Bangladesh</a>
+                    </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+
+  <script>
+        function callNow() {
+            const phoneNumber = "+8801316455518";
+            window.location.href = `tel:${phoneNumber}`;
+        }
+
+
+function saveContact() {
+    const contact = {
+        name: "Mehedi Hasan",
+        email: "beautynest007@gmail.com",
+        phone: "+8801316455518",
+        address: "Beauty Nest, Shop #105, Level#3, New Market City Complex(Biswas Builders), New Market, Dhaka-1205, Bangladesh"
+    };
+
+    const vcardData = `BEGIN:VCARD
+VERSION:3.0
+FN:${contact.name}
+EMAIL:${contact.email}
+TEL:${contact.phone}
+ADR:${contact.address}
+END:VCARD`;
+
+    const blob = new Blob([vcardData], { type: "text/vcard" });
+    const url = window.URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.style.display = "none";
+    a.href = url;
+    a.download = `${contact.name.replace(" ", "_")}.vcf`;
+    document.body.appendChild(a);
+
+    a.click();
+
+    window.URL.revokeObjectURL(url);
+    document.body.removeChild(a);
+}
+
+
+
+
+
+    </script>
+</body>
+</html>
